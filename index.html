@@ -1,75 +1,392 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Crimson Exhibition</title>
 
 <style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-margin:0;
-font-family:Arial;
-background:#f5f1ed;
-color:#222;
-text-align:center;
+  background:#080808;
+  color:white;
+  font-family:Arial, sans-serif;
+  overflow-x:hidden;
 }
 
-header{
-padding:25px;
-background:white;
-color:#a3162d;
-font-size:22px;
-font-weight:bold;
+/* NAVBAR */
+
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:20px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,.85);
+  backdrop-filter:blur(10px);
+  z-index:100;
+  border-bottom:1px solid #5b0000;
 }
 
-main{
-padding:80px 20px;
+.logo{
+  color:#d10000;
+  font-size:22px;
+  font-weight:bold;
+  letter-spacing:3px;
 }
 
-h1{
-font-size:42px;
-color:#a3162d;
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-size:14px;
 }
 
-p{
-color:#666;
-line-height:1.6;
+nav a:hover{
+  color:#e00000;
 }
 
-button{
-background:#a3162d;
-color:white;
-border:0;
-padding:14px 25px;
-border-radius:5px;
-font-size:16px;
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:100px 20px;
+  background:
+  radial-gradient(circle at center,#350000 0%,#080808 60%);
 }
+
+.hero h1{
+  font-size:clamp(45px,10vw,110px);
+  letter-spacing:8px;
+  color:#d40000;
+  text-shadow:
+  0 0 10px #900000,
+  0 0 30px #600000;
+  animation:glow 3s infinite alternate;
+}
+
+.hero p{
+  margin-top:20px;
+  color:#bbb;
+  font-size:18px;
+  max-width:600px;
+}
+
+.hero button{
+  margin-top:35px;
+  padding:15px 30px;
+  background:#c40000;
+  border:none;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.hero button:hover{
+  background:#ff0000;
+  transform:scale(1.08);
+  box-shadow:0 0 25px red;
+}
+
+@keyframes glow{
+  from{
+    text-shadow:0 0 10px #900000;
+  }
+  to{
+    text-shadow:0 0 35px red,0 0 70px #500000;
+  }
+}
+
+/* SECTIONS */
 
 section{
-padding:50px 20px;
-background:white;
-margin-top:30px;
+  padding:100px 10%;
+}
+
+.title{
+  font-size:40px;
+  color:#d00000;
+  margin-bottom:40px;
+  border-left:5px solid #d00000;
+  padding-left:15px;
+}
+
+/* STORY */
+
+.story{
+  max-width:800px;
+  color:#ccc;
+  line-height:1.8;
+  font-size:17px;
+}
+
+/* CHARACTER CARDS */
+
+.characters{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
 }
 
 .card{
-background:#f5f1ed;
-padding:25px;
-margin:20px auto;
-max-width:350px;
-border-radius:10px;
+  background:#111;
+  border:1px solid #333;
+  padding:25px;
+  transition:.4s;
 }
 
+.card:hover{
+  transform:translateY(-10px);
+  border-color:#d00000;
+  box-shadow:0 0 25px #600000;
+}
+
+.card h3{
+  color:#e00000;
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#aaa;
+}
+
+/* CHAPTER */
+
+.chapter{
+  background:#120000;
+  border:1px solid #500000;
+  padding:35px;
+  text-align:center;
+}
+
+.chapter h2{
+  color:#e00000;
+  margin-bottom:15px;
+}
+
+.chapter button{
+  margin-top:20px;
+  padding:12px 25px;
+  background:transparent;
+  border:1px solid #d00000;
+  color:white;
+  cursor:pointer;
+}
+
+.chapter button:hover{
+  background:#d00000;
+}
+
+/* FOOTER */
+
 footer{
-background:#222;
-color:white;
-padding:20px;
+  text-align:center;
+  padding:40px;
+  color:#666;
+  border-top:1px solid #222;
+}
+
+/* SCROLL ANIMATION */
+
+.hidden{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s;
+}
+
+.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+nav{
+  padding:15px;
+}
+
+nav a{
+  margin-left:10px;
+  font-size:12px;
+}
+
+.hero h1{
+  letter-spacing:3px;
+}
+
+section{
+  padding:70px 7%;
+}
+
 }
 </style>
 </head>
 
 <body>
 
-<header>
-CRIMSON EXHIBITION
-</header>
+<nav>
 
-<main>
-<h1>CRIM
+<div class="logo">CRIMSON EXHIBITION</div>
+
+<div>
+<a href="#story">Story</a>
+<a href="#characters">Characters</a>
+<a href="#chapters">Chapters</a>
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<div class="hero">
+
+<h1>CRIMSON<br>EXHIBITION</h1>
+
+<p>
+Tokyo, 2026.
+A mysterious exhibition opens its doors.
+Those who enter may never return unchanged.
+</p>
+
+<button onclick="document.getElementById('story').scrollIntoView()">
+ENTER THE EXHIBITION
+</button>
+
+</div>
+
+
+<!-- STORY -->
+
+<section id="story" class="hidden">
+
+<h2 class="title">THE STORY</h2>
+
+<div class="story">
+
+<p>
+In the heart of Tokyo, an exhibition appears without warning.
+No advertisements. No history. No artist.
+Only a crimson invitation.
+</p>
+
+<br>
+
+<p>
+People enter searching for art.
+They discover something far more dangerous.
+Every room reveals memories, nightmares,
+and secrets that were never meant to exist.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- CHARACTERS -->
+
+<section id="characters" class="hidden">
+
+<h2 class="title">CHARACTERS</h2>
+
+<div class="characters">
+
+<div class="card">
+<h3>THE PROTAGONIST</h3>
+<p>
+A young student drawn toward the mysterious exhibition.
+</p>
+</div>
+
+<div class="card">
+<h3>THE CURATOR</h3>
+<p>
+The mysterious figure who welcomes every visitor.
+</p>
+</div>
+
+<div class="card">
+<h3>THE UNKNOWN</h3>
+<p>
+Something is watching from inside the exhibition.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CHAPTERS -->
+
+<section id="chapters" class="hidden">
+
+<h2 class="title">READ THE MANGA</h2>
+
+<div class="chapter">
+
+<h2>CHAPTER ONE</h2>
+
+<p>The Crimson Exhibition</p>
+
+<button onclick="alert('Chapter coming soon!')">
+READ CHAPTER
+</button>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 Crimson Exhibition</p>
+<p>A manga created by KAVI-67</p>
+
+</footer>
+
+
+<script>
+
+/* SCROLL REVEAL */
+
+const observer = new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+
+});
+
+});
+
+document.querySelectorAll(".hidden")
+.forEach(el => observer.observe(el));
+
+</script>
+
+</body>
+</html>
