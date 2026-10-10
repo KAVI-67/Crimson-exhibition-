@@ -615,6 +615,202 @@ document.querySelectorAll(".hidden")
 
 </script>
 
+<!-- CRIMSON EXHIBITION - ASHITA EVENT POPUP -->
+
+<style>
+  #ashita-event-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.86);
+    backdrop-filter: blur(7px);
+  }
+
+  #ashita-event-card {
+    position: relative;
+    width: 100%;
+    max-width: 390px;
+    max-height: 92vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 24px 20px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(145deg, #241019, #09090d 75%);
+    border: 1px solid #e12b4c;
+    border-radius: 18px;
+    box-shadow: 0 0 35px rgba(225, 43, 76, 0.35);
+    animation: ashitaReveal 0.5s ease-out;
+  }
+
+  #ashita-event-close {
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    color: white;
+    background: #000b;
+    font-size: 25px;
+    cursor: pointer;
+  }
+
+  #ashita-event-kicker {
+    margin: 0 28px 12px;
+    color: #ff667f;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+  }
+
+  #ashita-event-picture {
+    display: block;
+    width: 100%;
+    max-height: 48vh;
+    object-fit: contain;
+    margin: 0 auto 16px;
+    border: 1px solid #a82440;
+    border-radius: 12px;
+    background: #10090e;
+  }
+
+  #ashita-event-card h2 {
+    margin: 8px 0;
+    font-size: clamp(26px, 7vw, 34px);
+    letter-spacing: 2px;
+  }
+
+  #ashita-event-subtitle {
+    margin: 8px 0;
+    color: #ff526f;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  #ashita-event-description {
+    color: #d5cbd0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  #ashita-event-button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 14px;
+    border: 0;
+    border-radius: 8px;
+    color: white;
+    background: #c51f3d;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+
+  #ashita-event-button:hover {
+    background: #ed3153;
+  }
+
+  @keyframes ashitaReveal {
+    from {
+      opacity: 0;
+      transform: translateY(18px) scale(.96);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #ashita-event-card {
+      animation: none;
+    }
+  }
+</style>
+
+<div id="ashita-event-overlay"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="ashita-event-title">
+
+  <div id="ashita-event-card">
+
+    <button id="ashita-event-close"
+            aria-label="Close event popup">
+      &times;
+    </button>
+
+    <p id="ashita-event-kicker">
+      CRIMSON EXHIBITION
+    </p>
+
+    <!-- YOUR PICTURE GOES HERE -->
+    <img
+      id="ashita-event-picture"
+      src="./file_00000000ca8482119b013efff68f13c7.png"
+      alt="Ashita character reveal"
+    >
+
+    <h2 id="ashita-event-title">ASHITA</h2>
+
+    <p id="ashita-event-subtitle">
+      HAS ENTERED THE EXHIBITION
+    </p>
+
+    <p id="ashita-event-description">
+      A new presence has arrived.
+      The exhibition will never be the same.
+    </p>
+
+    <button id="ashita-event-button">
+      CONTINUE →
+    </button>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  const popup = document.getElementById(
+    "ashita-event-overlay"
+  );
+
+  if (!popup) return;
+
+  function closeAshitaPopup() {
+    popup.remove();
+  }
+
+  document.getElementById("ashita-event-close")
+    .addEventListener("click", closeAshitaPopup);
+
+  document.getElementById("ashita-event-button")
+    .addEventListener("click", closeAshitaPopup);
+
+  popup.addEventListener("click", function (event) {
+    if (event.target === popup) {
+      closeAshitaPopup();
+    }
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      closeAshitaPopup();
+    }
+  });
+})();
+</script>
+<!-- END ASHITA EVENT POPUP -->
+  
 </body>
 </html>
 <head>
