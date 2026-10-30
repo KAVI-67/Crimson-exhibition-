@@ -758,6 +758,142 @@ document.querySelectorAll(".hidden")
       animation: none;
     }
   }
+  
+/* =================================
+   🎃 CUTE PASTEL HALLOWEEN THEME
+   ================================= */
+
+:root {
+    --lavender: #e6d5ff;
+    --purple: #a78bfa;
+    --deep-purple: #594078;
+    --pink: #ffc9df;
+    --peach: #ffd5b5;
+    --cream: #fff5e9;
+    --text: #594568;
+}
+
+body {
+    background: linear-gradient(
+        135deg,
+        #fff0f7,
+        #eee4ff,
+        #fff1e4
+    );
+    color: var(--text);
+    font-family: 'Trebuchet MS', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #a16bc5;
+    text-shadow: 2px 2px 8px #ffc9df;
+}
+
+/* Paragraphs */
+p {
+    color: #705b7d;
+    line-height: 1.7;
+}
+
+/* Cards */
+.card {
+    background: rgba(255,255,255,0.75);
+    border: 2px solid #f3c8e0;
+    border-radius: 24px;
+    padding: 22px;
+    box-shadow: 0 8px 25px #d9b8e855;
+    backdrop-filter: blur(8px);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px #c9a5e977;
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(135deg, #f6b9d7, #c9a9ff);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 5px 12px #c9a9ff66;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.07);
+    box-shadow: 0 7px 20px #c9a9ff99;
+}
+
+/* Links */
+a {
+    color: #a36bc5;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ed91bd;
+}
+
+/* Images */
+img {
+    border-radius: 18px;
+}
+
+/* Halloween decorations */
+.halloween-decoration {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    user-select: none;
+    animation: halloweenFloat 4s ease-in-out infinite;
+}
+
+@keyframes halloweenFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+    50% {
+        transform: translateY(-15px) rotate(8deg);
+    }
+}
+
+/* Floating sparkle */
+.sparkle {
+    animation: sparkle 2s infinite alternate;
+}
+
+@keyframes sparkle {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+/* Selection colour */
+::selection {
+    background: #e8b9ff;
+    color: white;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff0f7;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d6b5ef;
+    border-radius: 20px;
+  }
+  
 </style>
 
 <div id="ashita-event-overlay"
